@@ -1,66 +1,109 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+    <div className="home-page animate-fade">
+      <section className="hero card glass">
+        <span className="welcome-tag">Premium Coffee Management</span>
+        <h1>Elevate Your Shop Experience</h1>
+        <p className="subtitle">
+          Manage your menu, track orders, and gain deep business insights with one elegant dashboard.
+        </p>
+        <div className="quick-actions">
+          <a href="/orders" className="btn btn-primary">
+            Start New Order
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
           </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          <a href="/menu" className="btn btn-outline">Configure Menu</a>
         </div>
-      </main>
+      </section>
+
+      <div className="feature-highlight">
+        <div className="card stat-preview">
+          <h3>Recent Growth</h3>
+          <div className="bar-group">
+            <div className="mini-bar" style={{ height: '40%' }}></div>
+            <div className="mini-bar" style={{ height: '60%' }}></div>
+            <div className="mini-bar" style={{ height: '80%' }}></div>
+          </div>
+          <p>+24% revenue this week</p>
+        </div>
+      </div>
+
+      <style jsx>{`
+        .home-page {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          align-items: center;
+          gap: 4rem;
+          height: 80vh;
+          padding: 0 2rem;
+        }
+
+        .hero {
+          padding: 4rem;
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+          text-align: left;
+          background: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(212,163,115,0.05) 100%);
+        }
+
+        .welcome-tag {
+          font-size: 0.8rem;
+          font-weight: 800;
+          color: var(--accent);
+          text-transform: uppercase;
+          letter-spacing: 0.2em;
+        }
+
+        .hero h1 {
+          font-size: 4.5rem;
+          line-height: 1.1;
+          color: var(--primary);
+        }
+
+        .subtitle {
+          font-size: 1.2rem;
+          color: var(--muted-foreground);
+          max-width: 500px;
+          margin-bottom: 1rem;
+        }
+
+        .quick-actions {
+          display: flex;
+          gap: 1rem;
+        }
+
+        .stat-preview {
+            width: 300px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: var(--primary);
+            color: white;
+            justify-self: center;
+        }
+
+        .bar-group {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            height: 60px;
+        }
+
+        .mini-bar {
+            flex: 1;
+            background: var(--secondary);
+            border-radius: 4px;
+        }
+
+        @media (max-width: 1100px) {
+            .home-page { grid-template-columns: 1fr; height: auto; padding: 4rem 1rem; }
+            .feature-highlight { display: none; }
+        }
+      `}</style>
     </div>
   );
 }
