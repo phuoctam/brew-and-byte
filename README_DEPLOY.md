@@ -45,7 +45,8 @@ npx prisma db push
 ## 5. Maintenance & Scaling
 
 *   **Prisma 7 Configuration**: Database connections are now managed via `prisma.config.ts`. The `schema.prisma` file is strictly for data modeling.
-*   **Prisma Client**: The app uses a singleton pattern in `src/lib/prisma.js` with an explicit `datasourceUrl` to ensure stable connections on Vercel.
+*   **Database Adapter**: In Prisma 7, direct connections (non-Accelerate) require an explicit adapter. We use `@prisma/adapter-pg` in `src/lib/prisma.js`.
+*   **Prisma Client**: The app uses a singleton pattern with the adapter to ensure stable connections on Vercel.
 *   **Migrations**: For future schema changes, use `npx prisma migrate dev` locally and run `npx prisma db push` to sync your Neon database.
 
 ---
